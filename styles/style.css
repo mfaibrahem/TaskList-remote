@@ -39,21 +39,23 @@ form {
   flex-wrap: wrap;
   border-radius: 3px;
 }
-.green-alert {
+.alert {
   color: #fff;
   visibility: hidden;
   height: 0;
   opacity: 0;
   transition: all .5s ease-out;
 }
-.green-alert-on {
+
+.alert-on {
   visibility: visible;
   opacity: 1;
   padding: .3em 1em;
   margin-bottom: 1em;
   height: auto;
-  box-shadow: 1px 2px 4px tomato;
+  box-shadow: 1px 2px 4px #ccc;
 }
+
 input[type="text"] {
   background-color: transparent;
   outline: 0;
@@ -113,7 +115,6 @@ input[type="text"]:focus + .new-task-span {
   color: #333;
 }
 .clear-tasks {
-  margin-top: 1em;
   color: #fff;
   font-size: 1.1em;
   background: tomato;
