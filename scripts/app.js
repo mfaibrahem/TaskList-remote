@@ -17,6 +17,8 @@ function loadEventListeners() {
   UItaskList.addEventListener('click', removeTask);
   // Remove all Tasks
   UIclearBtn.addEventListener('click', clearTasks);
+  // filter tasks
+  UIfilter.addEventListener('keyup', filterTasks);
 }
 
 // addTask function
@@ -58,7 +60,18 @@ function clearTasks() {
       UItaskList.innerHTML = '';
     }
   }
-
+}
+// filter tasks
+function filterTasks(e) {
+  const text = e.target.value.toLowerCase();
+  document.querySelectorAll('.created-list').forEach((list) => {
+    if(list.innerText.toLowerCase().indexOf(text) !== -1) {
+      list.style.display = 'flex';
+    } else {
+      list.style.display = 'none';
+    }
+  });
+  console.log(text);
 }
 
 
