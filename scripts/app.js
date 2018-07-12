@@ -10,7 +10,10 @@ loadEventListeners();
 
 // load event listeners
 function loadEventListeners() {
+  // Add task Event
   UIform.addEventListener('submit', addTask);
+  // Remove Task Event 
+  UItaskList.addEventListener('click', removeTask);
 }
 
 // addTask function
@@ -37,6 +40,13 @@ function addTask(e) {
   UItask.value = '';
   e.preventDefault();
 }
+
+function removeTask(e) {
+  if (e.target.parentElement.classList.contains('xy-div')) {
+    e.target.parentElement.parentElement.remove();
+  }
+}
+
 
 function timeFun(UIelement, message, color, time) {
   UIelement.innerText = message;

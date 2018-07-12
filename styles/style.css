@@ -145,7 +145,6 @@ input[type="text"]:focus + .new-task-span {
   right: 0;
   height: 1em;
   width: 1em;
-  cursor: pointer;
 }
 .x-icon, .y-icon {
   width: 1em;
@@ -161,13 +160,7 @@ input[type="text"]:focus + .new-task-span {
 .y-icon {
   transform: rotate(45deg);
 }
-.xy-div:hover .x-icon,
-.xy-div:hover .y-icon {
-  background: tomato;
-}
-.xy-div:hover .x-icon {
-  transform: rotate(-135deg);
-}
-.xy-div:hover .y-icon {
-  transform: rotate(135deg);
+.x-icon:hover,
+.y-icon:hover {
+  cursor: pointer;
 }
