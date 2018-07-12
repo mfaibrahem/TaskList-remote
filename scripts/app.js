@@ -11,6 +11,8 @@ loadEventListeners();
 
 // load event listeners
 function loadEventListeners() {
+  // DOM load Event
+  document.addEventListener('DOMContentLoaded', getTasks);
   // Add task Event
   UIform.addEventListener('submit', addTask);
   // Remove Task Event 
@@ -21,14 +23,36 @@ function loadEventListeners() {
   UIfilter.addEventListener('keyup', filterTasks);
 }
 
+// get tasks from LS 
+function getTasks() {
+  let tasks;
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+  tasks.forEach((task) => {
+    createTask(task);
+  });
+}
+
 // addTask function
 function addTask(e) {
   if (UItask.value === '' || parseInt(UItask.value) < 0) {
     timeFun(UIredAlert, 'Please Enter A Valid Task', 'tomato', 3000);
   } else {
-    const li = document.createElement('li');
+    createTask(UItask.value);
+    // add task to local storage
+    storeTaskInLocalStorage(UItask.value);
+  }
+  UItask.value = '';
+  e.preventDefault();
+}
+
+function createTask (value){
+  const li = document.createElement('li');
     li.classList.add('created-list');
-    li.appendChild(document.createTextNode(UItask.value));
+    li.appendChild(document.createTextNode(value));
     const xyDiv = document.createElement('div');
     const xIcon = document.createElement('span');
     const yIcon = document.createElement('span');
@@ -38,17 +62,35 @@ function addTask(e) {
     xyDiv.appendChild(xIcon);
     xyDiv.appendChild(yIcon);
     li.appendChild(xyDiv);
-    // li.appendChild(xIcon);
-    // li.appendChild(yIcon);
     UItaskList.appendChild(li);
+}
+
+function storeTaskInLocalStorage(task) {
+  let tasks;
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
   }
-  UItask.value = '';
-  e.preventDefault();
+  tasks.push(task);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function removeTask(e) {
   if (e.target.parentElement.classList.contains('xy-div')) {
     e.target.parentElement.parentElement.remove();
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+      tasks = [];
+    } else {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    tasks.forEach((task, index) => {
+      if (e.target.parentElement.parentElement.innerText === task) {
+        tasks.splice(index, 1);
+      }
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 }
 
@@ -58,6 +100,7 @@ function clearTasks() {
   } else {
     if (confirm('Are You Sure!')) {
       UItaskList.innerHTML = '';
+      localStorage.clear();
     }
   }
 }
