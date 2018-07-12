@@ -12,19 +12,18 @@
   <div class="container">
     <form>
       <h1>Task List</h1>
-      <input type="text" name="task" placeholder="New Task">
+      <span class="green-alert"></span>
+      <input id="task" type="text" name="task" placeholder="New Task">
       <span class="new-task-span"></span>
       <input class="submit-input" type="submit" value="Add Task">
     </form>
     <div class="card">
       <!-- <span class="line"></span> -->
       <h2>Tasks</h2>
-      <input type="text" name="filter" placeholder="Filter Tasks">
+      <input id="filter" type="text" name="filter" placeholder="Filter Tasks">
       <span class="new-task-span"></span>
-      <div>
-        <ul class="colleciton"></ul>
-        <span class="clear-tasks">Clear Tasks</span>
-      </div>
+      <ul class="collection"></ul>
+      <span class="clear-tasks">Clear Tasks</span>
     </div>
   </div>
   <script src="scripts/app.js"></script>
