@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: teal;
+  font-family: 'Raleway', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  min-height: 50vh;
+  width: 50vw;
+  margin: auto;
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  background-color: #eee;
+  box-shadow: 1px 2px 6px 2px rgba(255, 255, 255, 0.911);
+}
+h1 {
+  color: #333;
+}
+form {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 3px;
+}
+.alert {
+  color: #fff;
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  transition: all .5s ease-out;
+}
+
+.alert-on {
+  visibility: visible;
+  opacity: 1;
+  padding: .3em 1em;
+  margin-bottom: 1em;
+  height: auto;
+  box-shadow: 1px 2px 4px #ccc;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  outline: 0;
+  font-size: 1.2em;
+  border: 0;
+  color: teal;
+  border-bottom: 2px solid #ccc;
+}
+.new-task-span {
+  height: 2px;
+  width: 0;
+  margin-bottom: 1em;
+  transition: all .5s;
+}
+input[type="text"]:focus {
+  border-bottom: 0;
+}
+input[type="text"]:focus + .new-task-span {
+  width: 100%;
+  background: teal;
+}
+.submit-input {
+  align-self: flex-start;
+  font-size: 1.1em;
+  color: #eee;
+  background: teal;
+  padding: 8px 10px;
+  border-radius: 2px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+.submit-input:hover {
+  background: rgb(32, 133, 133);
+  box-shadow: 0 2px 6px rgb(32, 133, 133);
+}
+
+.submit-input:active,
+.submit-input:focus {
+  outline: 0;
+  border: 0;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 2em;
+  padding-top: 0;
+}
+.line {
+  background: #444;
+  flex: 1 100%;
+  height: 3px;
+}
+.card h2 {
+  color: #333;
+}
+.clear-tasks {
+  color: #fff;
+  font-size: 1.1em;
+  background: tomato;
+  padding: 8px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all .2s ease-out;
+}
+.clear-tasks:hover {
+  box-shadow: 0 2px 6px tomato; 
+}
+
+.created-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  color: #333;
+  position: relative;
+}
+
+
+.xy-div{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  height: 1em;
+  width: 1em;
+}
+.x-icon, .y-icon {
+  width: 1em;
+  height: 4px;
+  background: teal;
+  margin-bottom: 3px;
+  position: absolute;
+  transition: all .5s;
+}
+.x-icon {
+  transform: rotate(-45deg);
+}
+.y-icon {
+  transform: rotate(45deg);
+}
+.x-icon:hover,
+.y-icon:hover {
+  cursor: pointer;
+}
